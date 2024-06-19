@@ -183,6 +183,40 @@ def elu(x, alpha=1.0):
     Saturation means a small derivative which decreases the variation
     and the information that is propagated to the next layer.
 
+    Examples: 
+    
+    ```python
+
+    # Example 1:
+    import tensorflow as tf
+
+    input = tf.constant([-1.0, 2.0, -2.0])
+    output = tf.keras.activations.elu(input, alpha=1.0)
+    print("Input:", input, "\n\nOutput:", output)
+
+    # Input: tf.Tensor([-1.  2. -2.], shape=(3,), dtype=float32) 
+
+    # Output: tf.Tensor([-0.63212055  2.         -0.86466473], shape=(3,), dtype=float32)
+
+    # Example 2:
+    import tensorflow as tf
+
+    input = tf.random.uniform(shape=(3, 2), minval=-1.0, maxval=2.0)
+    output = tf.keras.activations.elu(input, alpha=1.0)  
+    print("Input:", input, "\n\nOutput:", output)
+
+    #Input: tf.Tensor(
+    #       [[-0.9418436  -0.8625275 ]
+    #        [ 0.41385567  1.375485  ]
+    #.       [-0.01445484 -0.32630026]], shape=(3, 2), dtype=float32) 
+
+    #Output: tf.Tensor(
+    #       [[-0.6100917  -0.57790613]
+    #        [ 0.41385567  1.375485  ]
+    #        [-0.01435087 -0.2784115 ]], shape=(3, 2), dtype=float32)
+   
+    ```
+
     Args:
         x: Input tensor.
 
@@ -289,6 +323,42 @@ def gelu(x, approximate=False):
     GELU weights inputs by their value, rather than gating
     inputs by their sign as in ReLU.
 
+    Examples: 
+    
+    ```python
+
+    # Example 1:
+
+    import tensorflow as tf
+
+    input = tf.constant([1.0, 3.0, 6.0])
+    output = tf.keras.activations.gelu(input,approximate=False)
+    print("Input:", input, "\n\nOutput:", output)
+
+    # Input: tf.Tensor([1. 3. 6.], shape=(3,), dtype=float32)
+
+    # Output: tf.Tensor([0.8413447 2.9959502 6.       ], shape=(3,), dtype=float32)
+
+    Example 2:
+
+    import tensorflow as tf
+
+    input = tf.random.uniform(shape=(3, 2), minval=-2.0, maxval=2.0)
+    output = tf.keras.activations.gelu(input,approximate=False)
+    print("Input:", input, "\n\nOutput:", output)
+
+    # Input: tf.Tensor(
+    #       [[-1.9179969   1.1768365 ]
+    #        [ 1.7955751  -1.4446721 ]
+    #        [ 0.38411188  0.2390871 ]], shape=(3, 2), dtype=float32) 
+
+    # Output: tf.Tensor(
+    #       [[-0.0528517   1.036051  ]
+    #        [ 1.7304299  -0.10730309]
+    #        [ 0.24950072  0.14213274]], shape=(3, 2), dtype=float32)
+
+    ```
+
     Args:
         x: Input tensor.
         approximate: A `bool`, whether to enable approximation.
@@ -345,6 +415,53 @@ def sigmoid(x):
 def exponential(x):
     """Exponential activation function.
 
+Examples: 
+    
+    ```python
+
+    # Example 1:
+
+    import tensorflow as tf
+
+    input = tf.random.uniform(shape=(2, 3), minval=-1.0, maxval=2.0)
+    output = tf.keras.activations.exponential(input)
+    print("Input:", input, "\n\nOutput:", output)
+
+    # Input: tf.Tensor(
+    #       [[ 0.32991254  0.545457   -0.5892837 ]
+    #        [ 1.3617883  -0.8860762   0.67818344]], shape=(2, 3), dtype=float32) 
+
+    # Output: tf.Tensor(
+    #       [[1.3908464  1.7253968  0.55472445]
+    #        [3.903167   0.41227028 1.9702952 ]], shape=(2, 3), dtype=float32)
+
+    Example 2:
+
+    import tensorflow as tf
+    input = tf.random.uniform(shape=(2, 3, 2), minval=-1.0, maxval=2.0)
+    output = tf.keras.activations.exponential(input)
+    print("Input:", input, "\n\nOutput:", output)
+
+    # Input: tf.Tensor(
+    #       [[[ 0.77627575  1.4569185 ]
+    #         [-0.60823727  0.6964468 ]
+    #         [ 0.18840921  0.73703146]]
+
+    #        [[ 1.4222443   0.15862453]
+    #         [ 0.73621213 -0.02420413]
+    #         [ 0.99195254 -0.38901246]]], shape=(2, 3, 2), dtype=float32) 
+
+    # Output: tf.Tensor(
+    #      [[[2.173363   4.2927113 ]
+    #        [0.5443095  2.0066102 ]
+    #        [1.2073275  2.0897229 ]]
+
+    #       [[4.1464157  1.1718979 ]
+    #         [2.0880113  0.9760864 ]
+    #         [2.6964946  0.67772585]]], shape=(2, 3, 2), dtype=float32)
+   
+    ```
+    
     Args:
         x: Input tensor.
     """
